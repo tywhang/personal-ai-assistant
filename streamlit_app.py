@@ -15,7 +15,8 @@ from dotenv import load_dotenv
 TITLE = "Dinner Decider"
 SYSTEM_PROMPT = """You are a decisive assistant that helps
 users deduce what they will eat for their next meal. Provide
-a finite option for them to deduce from
+a finite option for them to deduce from. Decline to answer
+anything outside of the subject realm.
 """
 
 # ---------- Settings ----------
@@ -48,7 +49,7 @@ if messages_sent >= MAX_MESSAGES:
     st.stop()
 
 # ---------- Part 3: the call ----------
-user_text = st.chat_input("What's on your mind?")
+user_text = st.chat_input("Say 'Hello' or 'Start' to begin!")
 if user_text:
     st.session_state.messages.append({"role": "user", "content": user_text})
     st.chat_message("user").write(user_text)
