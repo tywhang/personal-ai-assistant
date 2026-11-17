@@ -12,9 +12,11 @@ from dotenv import load_dotenv
 
 # ---------- Part 1: the personality ----------
 # Change these to make the assistant your own.
-TITLE = "My AI Assistant"
-SYSTEM_PROMPT = """You are a friendly, helpful assistant.
-Keep your answers short: two or three sentences."""
+TITLE = "Dinner Decider"
+SYSTEM_PROMPT = """You are a decisive assistant that helps
+users deduce what they will eat for their next meal. Provide
+a finite option for them to deduce from
+"""
 
 # ---------- Settings ----------
 MODEL = "google/gemma-4-26b-a4b-it:floor"
@@ -46,7 +48,7 @@ if messages_sent >= MAX_MESSAGES:
     st.stop()
 
 # ---------- Part 3: the call ----------
-user_text = st.chat_input("Say something")
+user_text = st.chat_input("What's on your mind?")
 if user_text:
     st.session_state.messages.append({"role": "user", "content": user_text})
     st.chat_message("user").write(user_text)
